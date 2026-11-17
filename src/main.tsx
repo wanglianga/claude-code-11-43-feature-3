@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { HashRouter } from 'react-router-dom';
 import { AppStateProvider, useAppState } from './state/AppState';
+import { EvidenceStateProvider } from './state/EvidenceState';
 import { AppRoutes } from './App';
 import './styles.css';
 
@@ -22,7 +23,11 @@ function Gate() {
   if (loading) {
     return <div style={{ padding: 40 }} className="muted">正在加载样例数据并计算输入哈希…</div>;
   }
-  return <AppRoutes />;
+  return (
+    <EvidenceStateProvider>
+      <AppRoutes />
+    </EvidenceStateProvider>
+  );
 }
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

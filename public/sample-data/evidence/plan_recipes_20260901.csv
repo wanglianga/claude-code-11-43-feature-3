@@ -1,0 +1,7 @@
+material_id,plan_id,session_id,recipe_id,ingredient_name,planned_qty,unit,note
+PLAN-A-L-1,PLAN-A-L-1,MS-A-0901-L,R-A-02,芝麻油,0.2,L,午餐菜谱计划用芝麻油
+PLAN-A-B-1,PLAN-A-B-1,MS-A-0901-B,R-A-05,纯牛奶,6,L,
+PLAN-A-D-1,PLAN-A-D-1,MS-A-0901-D,R-A-06,白芝麻,0.3,kg,
+PLAN-A2-L-1,PLAN-A2-L-1,MS-A-0902-L,R-A-03,基围虾,2,kg,
+PLAN-B-L-1,PLAN-B-L-1,MS-B-0901-L,R-B-01,鸡蛋,1,kg,
+PLAN-B2-L-1,PLAN-B2-L-1,MS-B-0902-L,R-B-03,三文鱼,2.5,kg,

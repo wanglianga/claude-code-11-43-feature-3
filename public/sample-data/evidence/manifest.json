@@ -1,0 +1,16 @@
+{
+  "evidenceManifestVersion": "1.0.0",
+  "generatedAt": "2026-09-12T09:00:00+08:00",
+  "description": "证据语义样例清单：七类输入材料 + 转抄材料 + 补证批次（全部为虚构数据，仅用于分析演示）。材料身份、来源批次、有效范围、原始行与更正关系均在推导中保留。",
+  "batches": [
+    { "batchId": "ev-plan-1", "kind": "PLAN_RECIPE", "fileName": "evidence/plan_recipes_20260901.csv", "dataDate": "2026-09-01", "expectedRows": 6, "status": "ARRIVED", "notes": "计划配方（餐次维度，菜谱登记）" },
+    { "batchId": "ev-req-1", "kind": "REQUISITION", "fileName": "evidence/requisitions_20260901.csv", "dataDate": "2026-09-01", "expectedRows": 8, "status": "ARRIVED", "notes": "领料事实（领进厨房 ≠ 投进每锅）" },
+    { "batchId": "ev-input-1", "kind": "ACTUAL_INPUT", "fileName": "evidence/actual_inputs_20260901.csv", "dataDate": "2026-09-01", "expectedRows": 9, "status": "ARRIVED", "notes": "实际投料/未投料记录（锅次维度）" },
+    { "batchId": "ev-pot-1", "kind": "PRODUCTION_BATCH", "fileName": "evidence/production_batches_20260901.csv", "dataDate": "2026-09-01", "expectedRows": 10, "status": "ARRIVED", "notes": "制作分锅（锅次 → 餐次）" },
+    { "batchId": "ev-sub-1", "kind": "SUBSTITUTION", "fileName": "evidence/substitutions_20260901.csv", "dataDate": "2026-09-01", "expectedRows": 1, "status": "ARRIVED", "notes": "替换适用范围（范围未登记，保留仍成立的用料解释）" },
+    { "batchId": "ev-dest-1", "kind": "SERVING_DESTINATION", "fileName": "evidence/serving_destinations_20260901.csv", "dataDate": "2026-09-01", "expectedRows": 9, "status": "ARRIVED", "notes": "发餐去向（含两锅合并发餐、无逐份去向）" },
+    { "batchId": "ev-decl-1", "kind": "PRODUCT_DECLARATION", "fileName": "evidence/product_declarations_20260901.csv", "dataDate": "2026-09-01", "expectedRows": 11, "status": "ARRIVED", "notes": "商品成分声明（含有/可能含有/明确未检出，连同配方与批次）" },
+    { "batchId": "ev-note-1", "kind": "TRANSCRIPTION", "fileName": "evidence/transcriptions_20260901.csv", "dataDate": "2026-09-01", "expectedRows": 6, "status": "ARRIVED", "notes": "厨房日报/窗口汇总等转抄材料（含同源转抄与循环引用样例）" },
+    { "batchId": "ev-supp-1", "kind": "ACTUAL_INPUT", "fileName": "evidence/supplement_actual_inputs_20260912.csv", "dataDate": "2026-09-12", "expectedRows": 1, "status": "SUPPLEMENT", "notes": "补证批次：默认不进入推导，分析师在「补证与预览」页预览影响后提交" }
+  ]
+}

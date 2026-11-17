@@ -1,0 +1,2 @@
+material_id,sub_id,session_id,replaced_ingredient,substitute_ingredient,scope_type,scope_pots,full_replacement,registered_at,note
+SUB-A-OIL,SUB-A-OIL,MS-A-0901-L,芝麻油,葵花籽油,UNCLEAR,,NO,2026-09-01T11:05:00+08:00,厨房备注“已改用葵花籽油”，未登记适用锅次（范围不明确，保留仍成立的芝麻油用料解释）

@@ -1,0 +1,2 @@
+material_id,input_id,pot_id,record_type,product_code,product_batch,ingredient_name,qty,unit,input_at,cites,note
+INPUT-A-L2,INPUT-A-L2,POT-A2,INPUT,6901001000208,SO-0901,芝麻油,0.3,L,2026-09-01T10:55:00+08:00,REQ-A-0901-SES,补证：2号锅实际投芝麻油（厨房补录，2026-09-12 到件）

@@ -1,8 +1,9 @@
 import { openDB, type IDBPDatabase } from 'idb';
 import type { AnalysisRun, MappingState } from '../types';
+import type { EvidenceRun } from '../evidence/types';
 
 const DB_NAME = 'campus-meal-dq';
-const DB_VERSION = 1;
+const DB_VERSION = 2;
 
 export interface SnapshotRecord {
   id: string;
@@ -15,6 +16,7 @@ interface DBSchema {
   kv: { key: string; value: unknown };
   runs: { key: string; value: AnalysisRun };
   snapshots: { key: string; value: SnapshotRecord };
+  evidenceRuns: { key: string; value: EvidenceRun };
 }
 
 let dbPromise: Promise<IDBPDatabase<DBSchema>> | null = null;
@@ -32,13 +34,16 @@ function db() {
         if (!database.objectStoreNames.contains('snapshots')) {
           database.createObjectStore('snapshots', { keyPath: 'id' });
         }
+        if (!database.objectStoreNames.contains('evidenceRuns')) {
+          database.createObjectStore('evidenceRuns', { keyPath: 'runId' });
+        }
       },
     });
   }
   return dbPromise;
 }
 
-// ---------- KV（映射状态等单例对象） ----------
+// ---------- KV（映射状态、证据材料库、推导库、预览草稿、计算任务等单例对象） ----------
 
 export async function kvGet<T>(key: string): Promise<T | undefined> {
   const rec = await (await db()).get('kv', key);
@@ -47,6 +52,33 @@ export async function kvGet<T>(key: string): Promise<T | undefined> {
 
 export async function kvSet(key: string, value: unknown): Promise<void> {
   await (await db()).put('kv', { key, value });
+}
+
+export async function kvDelete(key: string): Promise<void> {
+  await (await db()).delete('kv', key);
+}
+
+/**
+ * 原子比较并写入（同一 IDB 事务内完成读-校验-写）：
+ * 用于材料库等单例对象的乐观锁提交，杜绝两个标签页交错写入同一修订号。
+ */
+export async function kvCompareAndSwap<T>(
+  key: string,
+  expect: (current: T | undefined) => boolean,
+  value: T,
+): Promise<boolean> {
+  const database = await db();
+  const tx = database.transaction('kv', 'readwrite');
+  const store = tx.objectStore('kv');
+  const rec = await store.get(key);
+  const current = rec ? (rec as { value: T }).value : undefined;
+  if (!expect(current)) {
+    await tx.done;
+    return false;
+  }
+  await store.put({ key, value });
+  await tx.done;
+  return true;
 }
 
 // ---------- 分析运行 ----------
@@ -79,14 +111,44 @@ export async function getAllSnapshots(): Promise<SnapshotRecord[]> {
   return recs.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
 }
 
+// ---------- 证据推导运行（不可变快照） ----------
+
+export async function saveEvidenceRun(run: EvidenceRun): Promise<void> {
+  await (await db()).put('evidenceRuns', run);
+}
+
+export async function getAllEvidenceRuns(): Promise<EvidenceRun[]> {
+  const runs = await (await db()).getAll('evidenceRuns');
+  return runs.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+}
+
+export async function deleteEvidenceRun(runId: string): Promise<void> {
+  await (await db()).delete('evidenceRuns', runId);
+}
+
 export async function clearAll(): Promise<void> {
   const database = await db();
-  await Promise.all([database.clear('kv'), database.clear('runs'), database.clear('snapshots')]);
+  await Promise.all([
+    database.clear('kv'),
+    database.clear('runs'),
+    database.clear('snapshots'),
+    database.clear('evidenceRuns'),
+  ]);
 }
 
 export const KV_KEYS = {
   mappingState: 'mapping-state',
   lastDataset: 'last-dataset',
+  /** 证据模块：已提交材料库（含更正记录与修订号） */
+  evidenceMaterialStore: 'evidence-material-store',
+  /** 证据模块：当前推导库（支持路径 + 反向依赖，原子整体替换） */
+  evidenceDerivation: 'evidence-derivation',
+  /** 证据模块：未提交的补证/撤回预览草稿 */
+  evidencePreviewDraft: 'evidence-preview-draft',
+  /** 证据模块：未完成计算任务（页面关闭后恢复续算） */
+  evidenceJob: 'evidence-job',
+  /** 证据模块：被并发更正取代的旧资料计算（留档，不覆盖当前推导） */
+  evidenceStale: 'evidence-stale',
 } as const;
 
 export type { MappingState };

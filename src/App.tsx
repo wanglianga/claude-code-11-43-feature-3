@@ -7,6 +7,7 @@ import { QualityPage } from './pages/QualityPage';
 import { RunsPage } from './pages/RunsPage';
 import { RunDetailPage } from './pages/RunDetailPage';
 import { ComparePage } from './pages/ComparePage';
+import { EvidencePage } from './pages/EvidencePage';
 
 const NAV = [
   { to: '/overview', label: '总览', icon: '📊' },
@@ -15,6 +16,7 @@ const NAV = [
   { to: '/quality', label: '质量检查', icon: '🧪' },
   { to: '/runs', label: '分析运行', icon: '▶️' },
   { to: '/compare', label: '运行对比', icon: '🆚' },
+  { to: '/evidence', label: '证据与推导', icon: '🧭' },
 ];
 
 function ConflictBanner() {
@@ -75,6 +77,7 @@ export function AppRoutes() {
           <Route path="/runs" element={<RunsPage />} />
           <Route path="/runs/:runId" element={<RunDetailPage />} />
           <Route path="/compare" element={<ComparePage />} />
+          <Route path="/evidence" element={<EvidencePage />} />
           <Route path="*" element={<Navigate to="/overview" replace />} />
         </Routes>
       </main>

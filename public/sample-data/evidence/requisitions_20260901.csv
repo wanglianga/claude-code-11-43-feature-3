@@ -1,0 +1,9 @@
+material_id,req_id,req_date,school_id,window,product_code,ingredient_name,qty,unit,note
+REQ-A-0901-SES,REQ-A-0901,2026-09-01,A,lunch,6901001000208,芝麻油,0.5,L,同一领料单列出两种油，未注明各用哪锅
+REQ-A-0901-SUN,REQ-A-0901,2026-09-01,A,lunch,6901001000215,葵花籽油,0.5,L,同一领料单列出两种油，未注明各用哪锅
+REQ-B-0901D-SHR,REQ-B-0901D,2026-09-01,B,dinner,B-SP-008,基围虾,2,kg,领入乙校厨房（晚餐），无后续投料登记
+REQ-A-0901B-MILK,REQ-A-0901B,2026-09-01,A,breakfast,6901001000048,纯牛奶,6,L,
+REQ-A-0901D-SES,REQ-A-0901D,2026-09-01,A,dinner,6901001000109,白芝麻,0.3,kg,
+REQ-B-0902-SAL,REQ-B-0902,2026-09-02,B,lunch,B-SP-007,三文鱼,2.5,kg,
+REQ-A-0902-SHR,REQ-A-0902,2026-09-02,A,lunch,6901001000086,基围虾,2,kg,
+REQ-B-0901-EGG,REQ-B-0901,2026-09-01,B,lunch,B-SP-003,鸡蛋,1,kg,

@@ -515,3 +515,76 @@ textarea:focus {
   font-weight: 700;
   color: var(--candidate);
 }
+
+/* 证据模块：六态与推导展示 */
+.badge.maybe {
+  background: #fff4e0;
+  color: #b7791f;
+}
+.badge.planned {
+  background: #e8f1fb;
+  color: var(--primary-dark);
+}
+.pot-block {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  background: #fcfdfe;
+}
+.pot-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: 13px;
+}
+.input-block {
+  margin: 8px 0 0 14px;
+  padding-left: 10px;
+  border-left: 3px solid var(--primary-soft);
+  font-size: 13px;
+}
+.input-block .btn {
+  margin-left: 8px;
+}
+.decl-block {
+  margin: 6px 0 6px 14px;
+  padding-left: 10px;
+  border-left: 3px solid var(--border);
+  font-size: 12px;
+}
+.decl-block .btn {
+  margin-left: 8px;
+}
+.path-block {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+}
+.path-block.blocked {
+  opacity: 0.72;
+  border-style: dashed;
+}
+.conflict-box {
+  border: 1px solid #dda4a4;
+  background: var(--unknown-soft);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+}
+.rectify-form {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 8px;
+  padding: 8px;
+  background: var(--surface-2);
+  border-radius: 8px;
+}
+tr.count-changed td {
+  background: var(--candidate-soft);
+  font-weight: 600;
+}

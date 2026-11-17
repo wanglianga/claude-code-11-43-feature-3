@@ -1,0 +1,11 @@
+material_id,pot_id,session_id,recipe_id,pot_label,produced_servings,note
+POT-A1,POT-A1,MS-A-0901-L,R-A-02,1号锅,60,
+POT-A2,POT-A2,MS-A-0901-L,R-A-02,2号锅,60,
+POT-A-B1,POT-A-B1,MS-A-0901-B,R-A-05,早餐锅,80,
+POT-B-B1,POT-B-B1,MS-B-0901-B,R-B-06,早餐锅,70,
+POT-A-D1,POT-A-D1,MS-A-0901-D,R-A-06,晚餐锅,50,
+POT-A31,POT-A31,MS-A-0902-L,R-A-03,1号锅,40,
+POT-A32,POT-A32,MS-A-0902-L,R-A-03,2号锅,40,
+POT-B11,POT-B11,MS-B-0901-L,R-B-01,午餐锅,90,
+POT-B31,POT-B31,MS-B-0902-L,R-B-03,午餐锅,45,
+POT-B-D1,POT-B-D1,MS-B-0901-D,R-B-07,晚餐锅,30,

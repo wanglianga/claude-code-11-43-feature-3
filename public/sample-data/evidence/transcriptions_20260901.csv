@@ -1,0 +1,7 @@
+material_id,note_id,note_kind,session_id,ingredient_name,cites,note
+RPT-B-0902,RPT-B-0902,厨房日报,MS-B-0902-L,三文鱼,REQ-B-0902-SAL,厨房日报转抄领料单 REQ-B-0902
+SUM-B-W2,SUM-B-W2,窗口汇总,MS-B-0902-L,三文鱼,REQ-B-0902-SAL,窗口汇总同样转抄领料单 REQ-B-0902（同源，不构成多方证实）
+NOTE-KITCHEN-A,NOTE-KITCHEN-A,厨房交接记录,MS-A-0901-D,白芝麻,SUM-WINDOW-A,交接记录引用窗口汇总
+SUM-WINDOW-A,SUM-WINDOW-A,窗口汇总,MS-A-0901-D,白芝麻,NOTE-KITCHEN-A,窗口汇总引用厨房交接记录（互为引用形成循环）
+RPT-A-D1,RPT-A-D1,厨房日报,MS-A-0901-D,花生油,SUM-A-D1,日报引用窗口汇总
+SUM-A-D1,SUM-A-D1,窗口汇总,MS-A-0901-D,花生油,RPT-A-D1,窗口汇总引用厨房日报（循环，且无独立投料原件）
